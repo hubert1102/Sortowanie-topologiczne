@@ -24,11 +24,11 @@ let topol l =
 		let iter l lw = match l with
 			| [] -> vertex::lw
 			| h::t -> 
-				if mem h vis then match find h vis with
+				if mem h !vis then match find h !vis with
 					| visited -> raise Cykliczne
 					| added -> iter t lw
 				else dfs h
-		in iter l wyn
+		in iter l !wyn
 	in let policz l =
 		match l with
 		| [] -> wyn
